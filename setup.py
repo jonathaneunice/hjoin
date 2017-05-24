@@ -23,7 +23,7 @@ test_requirements = [
 
 setup(
     name='hjoin',
-    version='0.1.0',
+    version='0.1.1',
     description="Horizontal join",
     long_description=readme + '\n\n' + history,
     author="Jonathan Eunice",
