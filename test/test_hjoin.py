@@ -37,3 +37,10 @@ def test_hjoin_2d():
                   'this  | is\nthing |   '
 
 
+def test_hjoin_ansi():
+    from colors import red, blue
+    s = red('this perhaps\nand\nthat')
+    t = blue('and\none\nmore\nthing')
+    result = hjoin([s, t])
+    answer = '\x1b[31mthis perhaps\x1b[0m \x1b[34mand\x1b[0m  \n\x1b[31mand\x1b[0m          \x1b[34mone\x1b[0m  \n\x1b[31mthat\x1b[0m         \x1b[34mmore\x1b[0m \n             \x1b[34mthing\x1b[0m'
+    assert result == answer

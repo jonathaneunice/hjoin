@@ -11,10 +11,11 @@ with open('HISTORY.rst', encoding='utf-8') as history_file:
     history = history_file.read()
 
 requirements = [
-    # TODO: put package requirements here
+    'ansiwrap>=0.5.4'
 ]
 
 test_requirements = [
+    'ansicolors',
     'tox',
     'pytest',
     'coverage',
@@ -23,7 +24,7 @@ test_requirements = [
 
 setup(
     name='hjoin',
-    version='0.1.1',
+    version='0.1.2',
     description="Horizontal join",
     long_description=readme + '\n\n' + history,
     author="Jonathan Eunice",

@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from ansiwrap import ansilen, ansi_terminate_lines
+
 def string_shape(s):
     """
     Return the height, width of a string, in lines/scharacters.
@@ -7,8 +9,17 @@ def string_shape(s):
     NumPy and and its shape method.
     """
     lines = s.splitlines()
-    lengths = [len(l) for l in lines]
+    lengths = [ansilen(l) for l in lines]
     return (len(lengths), max(lengths or [0]))
+
+
+def ansi_ljust(s, width):
+    needs = width - ansilen(s)
+    if needs > 0:
+        return s + ' ' * needs
+    else:
+        return s
+
 
 
 def hjoin(strings, sep=' '):
@@ -20,8 +31,9 @@ def hjoin(strings, sep=' '):
     if not strings:
         return ''
     ncols = len(strings)
-    slines = [s.splitlines() for s in strings]
+    slines = [ansi_terminate_lines(s.splitlines()) for s in strings]
     shapes = [string_shape(s) for s in strings]
+    print('shapes:', shapes)
     heights, widths = zip(*shapes)
     height = max(heights)
     lines = []
@@ -33,7 +45,7 @@ def hjoin(strings, sep=' '):
                 cell = col_lines[row_index]
             else:
                 cell = ''
-            celljust = cell.ljust(widths[col_index])
+            celljust = ansi_ljust(cell, widths[col_index])
             row.append(celljust)
         lines.append(sep.join(row))
     return '\n'.join(lines)
