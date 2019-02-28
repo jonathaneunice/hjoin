@@ -4,27 +4,19 @@
 from setuptools import setup
 from codecs import open
 
-with open('README.rst', encoding='utf-8') as readme_file:
-    readme = readme_file.read()
+with open('README.rst', encoding='utf-8') as f:
+    readme = f.read()
 
-with open('HISTORY.rst', encoding='utf-8') as history_file:
-    history = history_file.read()
+with open('requirements.txt', encoding='utf-8') as f:
+    requirements = f.read().splitlines()
 
-requirements = [
-    'ansiwrap>=0.5.4'
-]
+with open('requirements_dev.txt', encoding='utf-8') as f:
+    test_requirements = f.read().splitlines()
 
-test_requirements = [
-    'ansicolors',
-    'tox',
-    'pytest',
-    'coverage',
-    'pytest-cov'
-]
 
 setup(
     name='hjoin',
-    version='0.1.2',
+    version='0.2.0',
     description="Horizontal join",
     long_description=readme + '\n\n' + history,
     author="Jonathan Eunice",
@@ -33,15 +25,13 @@ setup(
     packages=[
         'hjoin',
     ],
-    package_dir={'hjoin':
-                 'hjoin'},
     include_package_data=True,
     install_requires=requirements,
     license="Apache Software License 2.0",
     zip_safe=False,
     keywords='hjoin',
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: Apache Software License',
         "Programming Language :: Python :: 2",
@@ -52,6 +42,7 @@ setup(
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy',
         'Topic :: Software Development :: Libraries :: Python Modules',

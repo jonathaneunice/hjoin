@@ -33,7 +33,6 @@ def hjoin(strings, sep=' '):
     ncols = len(strings)
     slines = [ansi_terminate_lines(s.splitlines()) for s in strings]
     shapes = [string_shape(s) for s in strings]
-    print('shapes:', shapes)
     heights, widths = zip(*shapes)
     height = max(heights)
     lines = []

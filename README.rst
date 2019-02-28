@@ -9,32 +9,29 @@ hjoin
 .. image:: https://img.shields.io/travis/jonathaneunice/hjoin.svg
         :target: https://travis-ci.org/jonathaneunice/hjoin
 
-.. image:: https://readthedocs.org/projects/hjoin/badge/?version=latest
-        :target: https://hjoin.readthedocs.io/en/latest/?badge=latest
-        :alt: Documentation Status
-
 .. image:: https://pyup.io/repos/github/jonathaneunice/hjoin/shield.svg
      :target: https://pyup.io/repos/github/jonathaneunice/hjoin/
      :alt: Updates
 
+Early-stage code for horizontal text joining. That means obeying
+the line breaks and implicit columns in the given strings,
+rather than simply appending them linearly.
 
-Horizontal join
+.. code-block:: python
 
+    from hjoin import *
+    from colors import *
 
-* Free software: Apache Software License 2.0
-* Documentation: https://hjoin.readthedocs.io.
+    r = red('this perhaps\nand\nthat')
+    b = blue('and\none\nmore\nthing')
+    g = green('yet\nanother\n')
+    print(hjoin([r, b, g]))
 
+Notes
+-----
 
-Features
---------
-
-* TODO
-
-Credits
----------
-
-This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
-
-.. _Cookiecutter: https://github.com/audreyr/cookiecutter
-.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
-
+* This module is **not** ready for prime time. It's currently
+  published solely to enable distributed testing (CI pipeline).
+  You shouldn't use it, depend on it, or expect anything
+  specific from it. Especially don't expect its API will remain
+  constant.
